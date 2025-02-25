@@ -1,0 +1,160 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
+#include <thread>
+#include <chrono>
+
+using namespace std;
+
+const double AIR_DENSITY = 1.225;
+const double WING_AREA = 16.2;
+const double LIFT_COEFFICIENT = 1.2;
+const double DRAG_COEFFICIENT = 0.03;
+const double GRAVITY = 9.81;
+const double STALL_SPEED = 91.0;
+const double TAKEOFF_SPEED = 120.0;
+const double CRUISE_SPEED = 226.0;
+const double LANDING_SPEED = 130.0;
+const double MAX_FUEL = 200.0;
+const double BASE_WEIGHT = 1100.0;
+const double MAX_THRUST = 1500;
+const double TURBULENCE_PROB = 30; // 30% chance of turbulence during flight
+
+class Weather {
+public:
+    int windDirection;
+    int windSpeed;
+    string precipitation;
+    string turbulence;
+
+    Weather() { generateWeather(); }
+
+    void generateWeather() {
+        windDirection = rand() % 360;
+        windSpeed = rand() % 101;
+        precipitation = (rand() % 3 == 0) ? "Rain" : (rand() % 3 == 1) ? "Snow" : "Clear";
+        turbulence = ((rand() % 100) < TURBULENCE_PROB) ? "Severe" : (windSpeed > 30) ? "Moderate" : "Light";
+    }
+
+    void display() {
+        cout << "\n🌦️ Weather Update: Wind " << windSpeed << " km/h at " << windDirection << "°\n";
+        cout << "Precipitation: " << precipitation << ", Turbulence: " << turbulence << endl;
+    }
+};
+
+class Cessna172 {
+private:
+    double speed;
+    double heading;
+    double altitude;
+    double power;
+    double fuel;
+    double weight;
+    double remainingDistance;
+    bool inFlight;
+
+public:
+    Cessna172(double flightDistance) : speed(0), heading(0), altitude(0), power(0), fuel(MAX_FUEL),
+                                       weight(BASE_WEIGHT + MAX_FUEL * 0.8), remainingDistance(flightDistance), inFlight(false) {}
+
+    void takeoff() {
+        cout << "\n🛫 Taking off...\n";
+        while (speed < TAKEOFF_SPEED) {
+            power += 5;
+            speed += 10;
+            altitude += 20;
+            display();
+            this_thread::sleep_for(chrono::milliseconds(500));
+        }
+        cout << "\n✅ Takeoff complete! Reaching cruise altitude...\n";
+        altitude = 3000;
+        speed = CRUISE_SPEED;
+        power = 75;
+        inFlight = true;
+    }
+
+    void adjustForWeather(const Weather& w) {
+        // Adjust heading
+        if (w.windDirection > heading) heading += 3;
+        else heading -= 3;
+
+        // Adjust power for wind resistance
+        if (w.windSpeed > 50) power += 5;
+        else power -= 3;
+
+        // Handle turbulence
+        if (w.turbulence == "Severe") {
+            altitude -= 50;
+            cout << "\n⚠️ Severe Turbulence! Adjusting altitude.\n";
+        } else if (w.turbulence == "Moderate") {
+            altitude += 20;
+        }
+
+        // Fuel Consumption
+        fuel -= 0.5;
+        remainingDistance -= (speed / 60.0);  // Reduce distance by speed per minute
+
+        if (fuel <= 0) {
+            fuel = 0;
+            cout << "\n⚠️ WARNING: FUEL EMPTY! Emergency landing required!\n";
+            inFlight = false;
+        }
+
+        if (remainingDistance <= 0) {
+            inFlight = false;
+            cout << "\n🎯 Destination reached! Preparing to land...\n";
+        }
+    }
+
+    void land() {
+        cout << "\n🛬 Landing in progress...\n";
+        while (speed > LANDING_SPEED) {
+            power -= 5;
+            speed -= 10;
+            altitude -= 30;
+            display();
+            this_thread::sleep_for(chrono::milliseconds(500));
+        }
+        cout << "\n✅ Landing successful!\n";
+    }
+
+    void display() {
+        cout << "\n✈️ Cessna 172 Status: Speed " << speed << " km/h, Heading " << heading << "°\n";
+        cout << "Altitude: " << altitude << " m, Power: " << power << "%, Fuel: " << fuel << " L\n";
+        cout << "Remaining Distance: " << remainingDistance << " km\n";
+    }
+
+    bool isFlightActive() {
+        return inFlight;
+    }
+};
+
+int main() {
+    srand(time(0));
+
+    double flightDistance = rand() % 901 + 100;  // Random flight distance between 100-1000 km
+    Weather currentWeather;
+    Cessna172 plane(flightDistance);
+
+    cout << "\n🛩️ Flight Distance: " << flightDistance << " km\n";
+
+    plane.takeoff();
+
+    while (plane.isFlightActive()) {
+        this_thread::sleep_for(chrono::seconds(1));
+
+        if (rand() % 5 == 0) {  // Change weather every few iterations
+            currentWeather.generateWeather();
+            currentWeather.display();
+        }
+
+        plane.adjustForWeather(currentWeather);
+        plane.display();
+    }
+
+    plane.land();
+
+    cout << "\n🎉 Flight Complete!\n";
+    return 0;
+}
