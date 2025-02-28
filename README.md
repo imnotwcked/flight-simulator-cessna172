@@ -11,6 +11,7 @@ Turbulence Probability: 30% chance of severe turbulence, moderate if wind > 30 k
 
 High winds force adjustments in power and heading.
 Severe turbulence makes the plane drop altitude.
+
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
 🛩️ Cessna 172 Class (Flight Mechanics)
@@ -37,11 +38,13 @@ If fuel runs out, the plane issues an emergency landing warning.
 
 The plane gradually reduces speed and altitude.
 Once it reaches 130 km/h, the landing is completed
+
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
 🎲 Randomized Flight Dynamics
 The flight distance is randomly assigned between 100-1000 km.
 Weather changes periodically during the flight, requiring the plane to adjust dynamically.
+
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
 🔥 Summary
