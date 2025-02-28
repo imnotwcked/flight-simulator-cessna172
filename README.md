@@ -69,12 +69,13 @@ Weather changes periodically during the flight, requiring the plane to adjust dy
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
 🔥 Summary
-        ✅ Realistic flight physics (lift, drag, speed thresholds
+
+✅ Realistic flight physics (lift, drag, speed thresholds
         
-        ✅ Random weather conditions impacting flight performance
+✅ Random weather conditions impacting flight performance
+
+✅ Real-time fuel consumption tracking
         
-        ✅ Real-time fuel consumption tracking
+✅ Dynamic autopilot adjustments for turbulence & wind
         
-        ✅ Dynamic autopilot adjustments for turbulence & wind
-        
-        ✅ Landing sequence & emergency handling
+✅ Landing sequence & emergency handling
