@@ -72,7 +72,7 @@ The Cessna172 class models the aircraft's behavior, handling takeoff, flight adj
 
 🔥 Summary
 
-✅ Realistic flight physics (lift, drag, speed thresholds
+✅ Realistic flight physics (lift, drag, speed thresholds)
         
 ✅ Random weather conditions impacting flight performance
 
