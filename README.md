@@ -12,7 +12,7 @@ Turbulence Probability: 30% chance of severe turbulence, moderate if wind > 30 k
 High winds force adjustments in power and heading.
 Severe turbulence makes the plane drop altitude.
 
-ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
 🛩️ Cessna 172 Class (Flight Mechanics)
 The Cessna172 class models the aircraft's behavior, handling takeoff, flight adjustments, and landing.
